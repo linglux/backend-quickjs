@@ -127,6 +127,11 @@ if (UNIX AND NOT OHOS AND NOT (CMAKE_SYSTEM_NAME MATCHES "Emscripten"))
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
 endif ()
 
+# 设置Emscripten标志
+if (EMSCRIPTEN)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -mbulk-memory -matomics")
+endif()
+
 if (BIYE_CODE)
     set(CMAKE_C_COMPILER clang)
     set(CMAKE_CXX_COMPILER clang++)
